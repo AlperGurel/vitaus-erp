@@ -15,7 +15,7 @@ const cors = require("cors");
 //     useCreateIndex: true
 // });
 
-mongoose.connect("mongodb+srv://alper:alpersahin@vitaus-erp-eyyvv.mongodb.net/test?retryWrites=true&w=majority", {
+mongoose.connect("mongodb://alper:alpersahin34@ds151817.mlab.com:51817/heroku_v0nfcs00", {
     useNewUrlParser: true,
     useFindAndModify: false,
     useCreateIndex: true
