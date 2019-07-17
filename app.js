@@ -34,17 +34,7 @@ const stockRouter = require("./api/routes/stock");
 const campaignRouter = require("./api/routes/campaign")
 const orderRouter = require("./api/routes/order")
 
-app.use(morgan("dev"));
-app.use(bodyparser.urlencoded({extended: true}));
-app.use(bodyparser.json());
-app.use(fileUpload());
 app.use(cors());
-
-app.use("/stock", stockRouter);
-app.use("/campaign", campaignRouter);
-app.use("/api/order", orderRouter);
-app.disable("etag");
-
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
@@ -54,6 +44,18 @@ app.use((req, res, next) => {
     }
     next();
 })
+app.use(morgan("dev"));
+app.use(bodyparser.urlencoded({extended: true}));
+app.use(bodyparser.json());
+app.use(fileUpload());
+
+
+app.use("/stock", stockRouter);
+app.use("/campaign", campaignRouter);
+app.use("/api/order", orderRouter);
+app.disable("etag");
+
+
 
 app.use((req, res, next)=>{
     const error = new Error("Not Found");
