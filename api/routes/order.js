@@ -124,6 +124,11 @@ router.post("/", (req, res, next) => {
         detail: req.body.detail
     }
     if(order.no && order.creationDate && order.deadline){
+        //search for order no and return error if order no Found
+        console.log(order.no);
+        orderModel.find({no: order.no}, (err, result) => {
+            console.log(result);
+        })
         orderModel.create(order, (err, createdOrder) => {
             if(err){
                 return next(err);
