@@ -6,15 +6,6 @@ const mongoose = require("mongoose");
 const fileUpload = require("express-fileupload");
 const cors = require("cors");
 
-
-
-
-// mongoose.connect("mongodb://localhost/vitausERP", {
-//     useNewUrlParser: true,
-//     useFindAndModify: false,
-//     useCreateIndex: true
-// });
-
 mongoose.connect("mongodb://alper:alpersahin34@ds151817.mlab.com:51817/heroku_v0nfcs00", {
     useNewUrlParser: true,
     useFindAndModify: false,
@@ -34,7 +25,6 @@ const stockRouter = require("./api/routes/stock");
 const campaignRouter = require("./api/routes/campaign")
 const orderRouter = require("./api/routes/order")
 
-app.use(cors());
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
@@ -44,6 +34,7 @@ app.use((req, res, next) => {
     }
     next();
 })
+app.use(cors());
 app.use(morgan("dev"));
 app.use(bodyparser.urlencoded({extended: true}));
 app.use(bodyparser.json());
