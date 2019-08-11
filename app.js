@@ -41,8 +41,8 @@ app.use(bodyparser.json());
 app.use(fileUpload());
 
 
-app.use("/stock", stockRouter);
-app.use("/campaign", campaignRouter);
+app.use("/api/stock", stockRouter);
+app.use("/api/campaign", campaignRouter);
 app.use("/api/order", orderRouter);
 app.disable("etag");
 
