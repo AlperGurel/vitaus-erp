@@ -3,10 +3,10 @@ const router = express.Router();
 const campaignModel = require("../models/campaign")
 
 router.get("/", (req, res, next) => {
-    // campaignModel.find({}, (err, campaigns) => {
-    //     res.status(200).json(campaigns)
-    // })
-    res.status(200).json("ookk");
+    campaignModel.find({}, (err, campaigns) => {
+        res.status(200).json(campaigns)
+    })
+    
 })
 
 router.get("/:company", (req, res, next) => {
