@@ -1,6 +1,9 @@
 const mongoose = require("mongoose");
 
 const campaignSchema = new mongoose.Schema({
+    tid: {
+        type: String
+    },
     firm: {
         type: String,
     },
