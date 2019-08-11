@@ -16,11 +16,8 @@ router.get("/:company", (req, res, next) => {
 })
 
 router.post("/", (req, res, next) => {
-    const campaign = {
-        company: req.body.company,
-        details: req.body.details
-    }
-    if(campaign.company){
+    const campaign = req.body.campaign;
+    if(campaign){
         campaignModel.create(campaign, (err, createdCampaign) => {
             if(err){
                 return next(error);
@@ -28,11 +25,6 @@ router.post("/", (req, res, next) => {
             else{
                 res.status(200).json(createdCampaign);
             }
-        })
-    }
-    else{
-        res.status(300).json({
-            error: "Please send a campaign name"
         })
     }
 })
