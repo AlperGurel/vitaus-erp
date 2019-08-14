@@ -21,7 +21,7 @@ const campaignSchema = new mongoose.Schema({
     },
     attachments: [{
         url: String,
-        filaname: String
+        filename: String
     }]
 
 
