@@ -9,10 +9,17 @@ router.get("/", (req, res, next) => {
     
 })
 
-router.get("/:company", (req, res, next) => {
-    const company = req.params.company;
-    campaignModel.find({company: new RegExp(company)}, (err, campaigns) => {
-        res.status(200).json(campaigns);
+// router.get("/:company", (req, res, next) => {
+//     const company = req.params.company;
+//     campaignModel.find({company: new RegExp(company)}, (err, campaigns) => {
+//         res.status(200).json(campaigns);
+//     })
+// })
+
+router.get("/:id", (req, res, nex) => {
+    const id = req.params.id;
+    campaignModel.findById(id, function(err, campaign){
+        res.status(200).json(campaign)
     })
 })
 
