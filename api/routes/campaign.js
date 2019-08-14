@@ -51,7 +51,7 @@ router.delete("/:id", (req, res, next) => {
 
 router.put("/:id", (req, res, next) => {
     const id = req.params.id;
-    campaignModel.findByIdAndUpdate(id, req.body.campaignData, (err, updatedCampaign) => {
+    campaignModel.findByIdAndUpdate(id, req.body.campaignData, {new: true}, (err, updatedCampaign) => {
         if(err){
             return next(error);
         }
