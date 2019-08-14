@@ -49,21 +49,33 @@ router.delete("/:id", (req, res, next) => {
     })
 })
 
-router.put("/", (req, res, next)=> {
-    const id = req.body._id
-    const newDetail = req.body.details;
-    const newCompany = req.body.company;
-    const options = {}
-    campaignModel.findByIdAndUpdate(id, {
-        details: newDetail,
-        company: newCompany
-    }, options, (err, campaign) => {
+router.put("/:id", (req, res, next) => {
+    const id = req.params.id;
+    campaignModel.findByIdAndUpdate(id, {}, (err, updatedCampaign) => {
         if(err){
             return next(error);
         }
-        res.status(200).json(campaign);
+        else{
+            res.status(200).json(updatedCampaign)
+        }
     })
-
 })
+
+// router.put("/", (req, res, next)=> {
+//     const id = req.body._id
+//     const newDetail = req.body.details;
+//     const newCompany = req.body.company;
+//     const options = {}
+//     campaignModel.findByIdAndUpdate(id, {
+//         details: newDetail,
+//         company: newCompany
+//     }, options, (err, campaign) => {
+//         if(err){
+//             return next(error);
+//         }
+//         res.status(200).json(campaign);
+//     })
+
+// })
 
 module.exports = router;
