@@ -6,14 +6,33 @@ const path = require("path");
 const xlsx = require("xlsx");
 const objectID = require("mongoose").Types.ObjectId;
 
+// router.get("/", (req, res, next) => {
+//     //get products that has a stock value true
+//     //return products as a response
+//     productModel.find({stock: "true"}, (err, products) => {
+//         res.status(200).json(products)
+//     });
+// })
+
 router.get("/", (req, res, next) => {
-    //get products that has a stock value true
-    //return products as a response
-    productModel.find({stock: "true"}, (err, products) => {
-        res.status(200).json(products)
-    });
+    productModel.find({}, (err, products) => {
+        res.status(200).json(products);
+    })
 })
 
+router.post("/", (req, res, next) => {
+    const stock = req.body.stock;
+    if(stock){
+        productModel.create(stock, (err, createdStock) => {
+            if(err){
+                return next(error);
+            }
+            else{
+                res.status(200).json(createdStock);
+            }
+        })
+    }
+})
 
 router.get("/:stockCode", (req, res, next) => {
     const code = req.params.stockCode;

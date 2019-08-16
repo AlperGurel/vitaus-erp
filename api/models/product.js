@@ -5,20 +5,21 @@ const productSchema = new mongoose.Schema({
         type: String,
         unique: true,
         required: true,
-
     },
+
     stockcode: {
         type: String,
         unique: true,
         required: true,
     },
+
     quantity: {
         type: Number,
         required: true
     },
+
     stock: {
-        type: Boolean,
-        required: true
+        type: Boolean
     }
 
 })
